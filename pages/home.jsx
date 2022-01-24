@@ -10,13 +10,13 @@ import Image from "next/image";
 const HomePage = ({ providers }) => {
   console.log(providers);
   return (
-    <div className="space-y-10 relative">
-      <header className="flex justify-around items-center py-4">
-        <div className="relative w-36 h-10">
+    <div className="relative space-y-10">
+      <header className="flex items-center justify-around py-4">
+        <div className="relative h-10 w-36">
           <Image src="https://rb.gy/vtbzlp" layout="fill" objectFit="contain" />
         </div>
-        <div className="flex items-center sm:divide-x divide-gray-300">
-          <div className="hidden sm:flex space-x-8 pr-4">
+        <div className="flex items-center divide-gray-300 sm:divide-x">
+          <div className="hidden pr-4 space-x-8 sm:flex">
             <HeaderLink Icon={ExploreIcon} text="Discover" />
             <HeaderLink Icon={GroupIcon} text="People" />
             <HeaderLink Icon={OndemandVideoSharpIcon} text="Learning" />
@@ -42,7 +42,7 @@ const HomePage = ({ providers }) => {
           </div>
         </div>
       </header>
-      <main className="flex flex-col xl:flex-row items-center max-w-screen-lg mx-auto">
+      <main className="flex flex-col items-center max-w-screen-lg mx-auto xl:flex-row">
         <div className="space-y-6 xl:space-y-10">
           <h1 className="text-3xl md:text-5xl text-amber-800/80 max-w-xl !leading-snug pl-4 xl:p-0">
             Welcome to LinkedIn!

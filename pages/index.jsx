@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <div>
       <Header />
-      Hello!
-      <button onClick={signOut}>Sign Out</button>
+      {/* Hello! */}
+      {/* <button onClick={signOut}>Sign Out</button> */}
     </div>
   );
 }
