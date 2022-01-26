@@ -10,6 +10,18 @@
 
 @layer components {
   .intent {
-    @apply flex justify-between items-center hover:shadow-xl p-4 cursor-pointer rounded-lg text-black bg-white max-w-md;
+    @apply flex max-w-md cursor-pointer items-center justify-between rounded-lg bg-white p-4 text-black hover:shadow-xl;
+  }
+
+  .sidebarButton {
+    @apply cursor-pointer border-gray-600 py-3 px-4 opacity-80 hover:opacity-100 dark:border-t;
+  }
+
+  .sidebarLink {
+    @apply cursor-pointer px-2.5 text-[13px] font-medium text-blue-500 hover:underline;
+  }
+
+  .inputButton {
+    @apply flex cursor-pointer items-center space-x-2 text-sm font-medium;
   }
 }

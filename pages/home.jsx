@@ -16,7 +16,7 @@ const HomePage = ({ providers }) => {
           <Image src="https://rb.gy/vtbzlp" layout="fill" objectFit="contain" />
         </div>
         <div className="flex items-center divide-gray-300 sm:divide-x">
-          <div className="hidden pr-4 space-x-8 sm:flex">
+          <div className="hidden space-x-8 pr-4 sm:flex">
             <HeaderLink Icon={ExploreIcon} text="Discover" />
             <HeaderLink Icon={GroupIcon} text="People" />
             <HeaderLink Icon={OndemandVideoSharpIcon} text="Learning" />
@@ -28,7 +28,7 @@ const HomePage = ({ providers }) => {
                 <div key={index}>
                   <div className="pl-4">
                     <button
-                      className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1.5 transition-all hover:border-2 hover:-m-[1px] hover:bg-blue-100"
+                      className="rounded-full border border-blue-700 px-5 py-1.5 font-semibold text-blue-700 transition-all hover:-m-[1px] hover:border-2 hover:bg-blue-100"
                       onClick={() => {
                         signIn(provider.id, { callbackUrl: "/" });
                       }}
@@ -42,9 +42,9 @@ const HomePage = ({ providers }) => {
           </div>
         </div>
       </header>
-      <main className="flex flex-col items-center max-w-screen-lg mx-auto xl:flex-row">
+      <main className="mx-auto flex max-w-screen-lg flex-col items-center xl:flex-row">
         <div className="space-y-6 xl:space-y-10">
-          <h1 className="text-3xl md:text-5xl text-amber-800/80 max-w-xl !leading-snug pl-4 xl:p-0">
+          <h1 className="max-w-xl pl-4 text-3xl !leading-snug text-amber-800/80 md:text-5xl xl:p-0">
             Welcome to LinkedIn!
           </h1>
           <div className="space-y-4">
@@ -62,7 +62,7 @@ const HomePage = ({ providers }) => {
             </div>
           </div>
         </div>
-        <div className="relative xl:absolute w-80 h-80 xl:w-[650px] xl:h-[650px] top-14 right-5">
+        <div className="relative top-14 right-5 h-80 w-80 xl:absolute xl:h-[650px] xl:w-[650px]">
           <Image src="https://rb.gy/vkzpzt" layout="fill" priority />
         </div>
       </main>
