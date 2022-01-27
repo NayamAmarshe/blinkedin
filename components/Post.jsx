@@ -10,15 +10,32 @@ import ReplyRoundedIcon from "@mui/icons-material/ReplyRounded";
 import { Avatar, IconButton } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
-// import TimeAgo from "timeago-react";
+import { AnimatePresence, motion } from "framer-motion";
+import TimeAgo from "timeago-react";
 import { useState } from "react";
 
 const Post = ({ post, modalPost }) => {
+  const { data: session } = useSession();
+
+  const [handlePost, setHandlePost] = useRecoilState(handlePostState);
+  const [modalType, setModalType] = useRecoilState(modalTypeState);
+  const [postState, setPostState] = useRecoilState(getPostState);
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
   const [showInput, setShowInput] = useState(false);
+  const [liked, setLiked] = useState(false);
 
   const truncate = (string, n) =>
     string?.length > n ? string.substr(0, n - 1) + "... See More" : string;
+
+  const deletePost = async () => {
+    const response = await fetch(`/api/posts/${post._id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    setHandlePost(true);
+    setModalOpen(false);
+  };
 
   return (
     <div
@@ -34,6 +51,10 @@ const Post = ({ post, modalPost }) => {
           </h6>
           <p className="text-sm opacity-80 dark:text-white/75">{post.email}</p>
           {/* Timestamp */}
+          <TimeAgo
+            datetime={post.createdAt}
+            className="text-xs opacity-80 dark:text-white/75"
+          />
         </div>
         {modalPost ? (
           <IconButton onClick={() => setModalOpen(false)}>
@@ -63,8 +84,54 @@ const Post = ({ post, modalPost }) => {
       )}
 
       {post.photoURL && !modalPost && (
-        <img src={post.photoURL} alt="Post" className="w-full cursor-pointer" />
+        <img
+          src={post.photoURL}
+          alt="Post"
+          className="w-full cursor-pointer"
+          onClick={() => {
+            setModalOpen(true);
+            setModalType("gifYouUp");
+            setPostState(post);
+          }}
+        />
       )}
+
+      <div className="mx-2.5 flex items-center justify-evenly border-gray-600/80 pt-2 text-black/60 dark:border-t dark:text-white/75">
+        {modalPost ? (
+          <button className="postButton">
+            <CommentOutlinedIcon />
+            <h4>Comment</h4>
+          </button>
+        ) : (
+          <button className="postButton" onClick={() => setLiked(!liked)}>
+            {liked ? (
+              <ThumbUpOffAltRoundedIcon className="-scale-x-100" />
+            ) : (
+              <ThumbUpOffAltOutlinedIcon className="-scale-x-100" />
+            )}
+            <AnimatePresence>
+              <motion.h4 className="transition-all ease-out">
+                {liked ? "Unlike" : "Like"}
+              </motion.h4>
+            </AnimatePresence>
+          </button>
+        )}
+
+        {session?.user?.email === post.email ? (
+          <button
+            className="postButton focus:text-red-400"
+            onClick={deletePost}
+          >
+            <DeleteRoundedIcon />
+            <h4>Delete post</h4>
+          </button>
+        ) : (
+          <button className="postButton ">
+            <ReplyRoundedIcon className="-scale-x-100" />
+            <h4>Share</h4>
+          </button>
+        )}
+      </div>
     </div>
   );
 };

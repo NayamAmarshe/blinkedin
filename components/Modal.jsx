@@ -1,13 +1,13 @@
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import IconButton from "@mui/material/IconButton";
-// import { getPostState } from "../atoms/postAtom";
+import { getPostState } from "../atoms/postAtom";
 import { useSession } from "next-auth/react";
-// import { useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { motion } from "framer-motion";
 import { Avatar } from "@mui/material";
 import Backdrop from "./Backdrop";
 import Form from "./Form";
-// import Post from "./Post";
+import Post from "./Post";
 
 const dropIn = {
   hidden: {
@@ -55,7 +55,7 @@ const gifYouUp = {
 
 const Modal = ({ handleClose, type }) => {
   const { data: session } = useSession();
-  // const post = useRecoilValue(getPostState);
+  const post = useRecoilValue(getPostState); // Just get the value and not the setter function
 
   return (
     <Backdrop onClick={handleClose}>
@@ -86,9 +86,8 @@ const Modal = ({ handleClose, type }) => {
         </motion.div>
       )}
 
-      {type === "gifYouUp" &&
-        {
-          /* <motion.div
+      {type === "gifYouUp" && (
+        <motion.div
           onClick={(e) => e.stopPropagation()}
           className="mx-6 -mt-[7vh] flex w-full max-w-6xl rounded-l-lg bg-[#1D2226]"
           variants={gifYouUp}
@@ -99,14 +98,14 @@ const Modal = ({ handleClose, type }) => {
           <motion.img
             alt=""
             onDoubleClick={handleClose}
-            src={post.photoUrl}
+            src={post.photoURL}
             className="max-h-[80vh] w-full max-w-3xl rounded-l-lg object-contain"
           />
           <div className="w-full rounded-r-lg bg-white dark:bg-[#1D2226] md:w-3/5">
             <Post post={post} modalPost />
           </div>
-        </motion.div> */
-        }}
+        </motion.div>
+      )}
     </Backdrop>
   );
 };
