@@ -1,5 +1,5 @@
 {
-  "name": "linkedin-cloen",
+  "name": "blinkedin",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -49,7 +49,7 @@ export default function Header() {
         </div>
         {/* RIGHT */}
       </div>
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center justify-center space-x-6">
         <HeaderLink Icon={HomeRoundedIcon} text="Home" feed active />
         <HeaderLink Icon={GroupIcon} text="My Network" feed />
         <HeaderLink Icon={BusinessCenterIcon} text="Jobs" feed hidden />

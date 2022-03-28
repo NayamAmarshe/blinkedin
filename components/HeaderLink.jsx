@@ -15,21 +15,23 @@ const HeaderLinks = ({ Icon, text, avatar, feed, active, hidden }) => {
         "flex cursor-pointer flex-col items-center justify-center"
       }
     >
-      {avatar ? (
-        <Icon className="!h-7 !w-7 lg:!-mb-1" />
-      ) : (
-        <Icon src={session?.user?.image} />
-      )}
-      <h4
-        className={`text-sm ${
-          feed && "mx-auto hidden w-full justify-center lg:flex"
-        }`}
-      >
-        {text}
-      </h4>
-      {active && (
-        <span className="hidden h-0.5 w-[calc(100%+20px)] rounded-t-full bg-black dark:bg-white lg:block" />
-      )}
+      <div className="flex flex-col items-center justify-center">
+        {avatar ? (
+          <Icon className="!h-5 !w-5 lg:!mb-1" />
+        ) : (
+          <Icon src={session?.user?.image} />
+        )}
+        <h4
+          className={`text-sm ${
+            feed && "mx-auto hidden w-full justify-center lg:flex"
+          }`}
+        >
+          {text}
+        </h4>
+        {active && (
+          <span className="hidden h-0.5 w-[calc(100%+20px)] rounded-t-full bg-black dark:bg-white lg:block" />
+        )}
+      </div>
     </div>
   );
 };

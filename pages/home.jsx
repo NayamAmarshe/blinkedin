@@ -13,7 +13,7 @@ const HomePage = ({ providers }) => {
     <div className="relative space-y-10">
       <header className="flex items-center justify-around py-4">
         <div className="relative h-10 w-36">
-          <Image src="https://rb.gy/vtbzlp" layout="fill" objectFit="contain" />
+          <Image src="/logo.png" layout="fill" objectFit="contain" />
         </div>
         <div className="flex items-center divide-gray-300 sm:divide-x">
           <div className="hidden space-x-8 pr-4 sm:flex">
@@ -45,7 +45,7 @@ const HomePage = ({ providers }) => {
       <main className="mx-auto flex max-w-screen-lg flex-col items-center xl:flex-row">
         <div className="space-y-6 xl:space-y-10">
           <h1 className="max-w-xl pl-4 text-3xl !leading-snug text-amber-800/80 md:text-5xl xl:p-0">
-            Welcome to LinkedIn!
+            Welcome to BlinkedIn!
           </h1>
           <div className="space-y-4">
             <div className="intent">
